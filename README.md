@@ -5,7 +5,12 @@ This app will include a mishmash of authentication methods, including traditiona
 
 This app allows you create a session-limited "account" to authenticate to and, once authenticated, will return some of the tracked detail of authentication, such as time spent using this authentication method, number of errors made using this method, and a quick view of the architecture of how the method authenticates, for applicable methods it will even return a quick evaluation of the security of the authentication method.
 
+## Dependencies
+
+Docker
+
 ## Installation
+To install the app, navigate to the root folder in a CLI and run
 ```bash
 docker compose build
 ```
@@ -16,7 +21,7 @@ To run the app, navigate to the root folder in a CLI and run
 ```bash
 docker compose up
 ```
-See in-app instructions for help with using specific features.
+Development server is hosted at http://localhost:8000/authapp/
 
 # License
 MIT License
