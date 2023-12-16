@@ -1,0 +1,46 @@
+<!-- authapp/dashboard.html -->
+
+{% extends 'authapp/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h2>Welcome, {{ user.username }}!</h2>
+
+        <section>
+            <h3>Username/Password Login Statistics</h3>
+            <ul>
+                {% for stat in username_password_stats %}
+                <li>{{ stat.login_time }} - {{ stat.login_method }} - {% if stat.login_successful %}Successful{% else %}Failed{% endif %}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h3>Google Account</h3>
+            {% if google_account %}
+                <p>Connected to Google account: {{ google_account.extra_data.email }}</p>
+            {% else %}
+                <p>Not connected to Google account.</p>
+                <a href="{% url 'google_login' %}">Connect to Google</a>
+            {% endif %}
+        </section>
+
+        <section>
+            {% if totp_devices %}
+                    <ul>
+                        {% for device in totp_devices %}
+                        <li>{{ device.confirmation_time }} - TOTP Device - {% if device.confirmed %}Confirmed{% else %}Not Confirmed{% endif %}</li>
+                        {% endfor %}
+                    </ul>
+            {% else %}
+                <p>No TOTP device found. 
+                    <p><a href="{% url 'totp_login' %}">Enable TOTP</a></p>
+                </p>
+            {% endif %}
+        </section>
+    {% else %}
+        <p>Please log in to access the dashboard.</p>
+    {% endif %}
+{% endblock %}

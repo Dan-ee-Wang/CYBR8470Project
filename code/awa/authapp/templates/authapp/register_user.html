@@ -1,0 +1,58 @@
+{% extends 'authapp/base.html' %}
+
+{% block title %}Register User{% endblock %}
+
+{% block content %}
+    <h2>User Registration</h2>
+    <form method="post" action="{% url 'register_user' %}" id="registrationForm">
+        {% csrf_token %}
+        
+        <!-- Username Field -->
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+
+    <!-- Password Field -->
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+            <div id="password-tooltip" style="display: none;">
+                <p>Password must be at least 8 characters long and include both letters and numbers.</p>
+            </div>
+        </div>
+
+        <!-- Repeat Password Field -->
+        <div class="form-group" id="repeat-password-container" style="display: none;">
+            <label for="{{ form.password2.id_for_label }}">Repeat Password:</label>
+            {{ form.password2 }}
+            <div id="match-tooltip" style="display: none;">
+                <p>Passwords do not match.</p>
+            </div>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <!-- Include the JavaScript file -->
+    {% load static %}
+    <script src="{% static 'js/register.js' %}"></script>
+
+    <style>
+        /* CSS for better form field alignment */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 35%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+    </style>
+{% endblock %}

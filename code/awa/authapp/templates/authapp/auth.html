@@ -1,0 +1,47 @@
+{% extends 'authapp/base.html' %}
+
+{% block title %}Authentication{% endblock %}
+
+{% block content %}
+    <h2>Authentication Options</h2>
+
+    <div>
+        <h3>Username/Password Login</h3>
+        <form method="post" action="{% url 'user_login' %}">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div>
+        <h3>Google Login</h3>
+        <a href="{% url 'google_login' %}">Login with Google</a>
+    </div>
+
+    <div>
+        {% if totp_devices %}
+            <h3>OTP Login</h3>
+            <p>Scan the QR code below with your authenticator app:</p>
+            <p>Or enter the secret key manually: {{ secret_key }}</p>
+            <form method="post" action="{% url 'totp_login' %}">
+                {% csrf_token %}
+                <label for="otp">Enter OTP:</label>
+                <input type="text" name="otp" required>
+                <br>
+                <button type="submit">Login with OTP</button>
+            </form>
+        {% else %}
+            <p>No TOTP device found. 
+                <p><a href="{% url 'totp_login' %}">Enable TOTP</a></p>
+            </p>
+        {% endif %}
+    </div>
+
+    <!-- Add any additional authentication options or instructions -->
+{% endblock %}

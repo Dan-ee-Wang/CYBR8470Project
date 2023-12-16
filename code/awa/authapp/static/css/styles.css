@@ -1,0 +1,112 @@
+/* Reset some default margin and padding */
+body, h1, h2, h3, p, div, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set everything to stack vertically */
+body {
+    font-family: 'Arial', sans-serif; /* Use a generic sans-serif font */
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333;
+}
+
+/* Style the header */
+header {
+    background-color: #3498db; /* Dodger blue header color */
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Style the navigation */
+nav {
+    background-color: #3498db; /* Dodger blue navigation background color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav li a:hover {
+    background-color: #2979b9; /* Slightly darker blue on hover */
+}
+
+/* Style the main content */
+main {
+    padding: 20px;
+}
+
+/* Style the footer */
+footer {
+    background-color: #3498db; /* Dodger blue footer background color */
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Additional styles for lists */
+.container ul {
+    list-style-type: none;
+}
+
+.container li {
+    display: inline-block;
+    margin-right: 10px; /* Add spacing between list items if needed */
+}
+
+/* Add some color to buttons */
+button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2979b9; /* Slightly darker blue on hover */
+}
+
+/* JS UI effect example */
+.ui-effect {
+    font-size: 18px;
+    color: #3498db;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.ui-effect:hover {
+    color: #2979b9; /* Slightly darker blue on hover */
+}
+
+nav ul li a {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #2979b9; /* Slightly darker blue on hover */
+}
+
+nav ul li a.active {
+    background-color: #ffeeba; /* Light yellow background for active link */
+}

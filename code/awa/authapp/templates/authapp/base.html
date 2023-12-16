@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Website{% endblock %}</title>
+    <!-- Using Django's static files -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Authapp{% endblock %}</h1>
+        <nav>
+            <ul>
+                <li class="{% block home_active %}{% endblock %}"><a href="{% url 'home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li class="{% block auth_active %}{% endblock %}"><a href="{% url 'auth' %}">Auth</a></li>
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="{% block login_active %}{% endblock %}"><a href="{% url 'user_login' %}">Login</a></li>
+                    <li class="{% block register_active %}{% endblock %}"><a href="{% url 'register_user' %}">Register</a></li>
+                {% endif %}
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Cyber8470</p>
+        <!-- Add more footer content as needed -->
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

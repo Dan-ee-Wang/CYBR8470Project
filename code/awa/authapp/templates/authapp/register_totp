@@ -1,0 +1,19 @@
+<!-- authapp/register_totp.html -->
+
+{% extends 'authapp/base.html' %}
+
+{% block title %}Register TOTP Device{% endblock %}
+
+{% block content %}
+    <h2>Register TOTP Device</h2>
+    <p>Scan the QR code below with your authenticator app:</p>
+    <img src="{{ provisioning_url }}" alt="TOTP QR Code">
+    <p>Or enter the secret key manually: {{ totp_device.key }}</p>
+    <form method="post" action="{% url 'confirm_totp_device' %}">
+        {% csrf_token %}
+        <label for="otp">Enter OTP:</label>
+        <input type="text" name="otp" required>
+        <br>
+        <button type="submit">Confirm TOTP Device</button>
+    </form>
+{% endblock %}
