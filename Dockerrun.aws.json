@@ -1,12 +1,26 @@
 {
-    "AWSEBDockerrunVersion": "1",
-    "Image": {
-      "Name": "daniwang/cybr8470project-main-authapp",
-      "Update": "true"
-    },
-    "Ports": [
-      {
-        "ContainerPort": 8000
-      }
-    ]
-  }
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "authapp",
+      "image": "cybr8470project-main-authapp:latest",
+      "essential": true,
+      "memory": 128,
+      "command": ["bash", "-c", "python3 code/awa/manage.py runserver 0.0.0.0:8000"],
+      "portMappings": [
+        {
+          "hostPort": 8000,
+          "containerPort": 8000
+        }
+      ],
+      "volumes": [
+        {
+          "host": {
+            "sourcePath": "./code"
+          },
+          "name": "authapp-volume"
+        }
+      ]
+    }
+  ]
+}
