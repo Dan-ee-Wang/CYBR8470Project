@@ -9,3 +9,5 @@ RUN pip3 install djangorestframework
 RUN pip3 install django-allauth
 RUN pip3 install django-model-utils
 RUN pip3 install django-otp
+
+EXPOSE 8000
